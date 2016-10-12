@@ -1,0 +1,61 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides: esocket
+# Required-Start: $network $remote_fs $syslog $time
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: OSSEC HIDS
+### END INIT INFO
+EXEC_PATH=/home/ahwwl/erlang/esocket/rel
+EXEC=esocket.py
+DAEMON=$EXEC_PATH/$EXEC
+NAME=esocket
+DESC=esocket
+# Source function library.
+#/etc/init.d/function
+export HOME=$EXEC_PATH
+if ! [ -x $EXEC_PATH/$EXEC ] ; then
+       echo "ERROR: $EXEC_PATH/$EXEC not found"
+       exit 1
+fi
+
+stop()
+{
+       echo "Stoping $EXEC ..."
+       python $DAEMON stop
+       sleep 0.1
+       echo "Shutting down $EXEC: [  OK  ]"
+}
+
+start()
+{
+       echo "Starting $EXEC ..."
+       python $DAEMON start
+       sleep 0.1
+       echo "Starting $EXEC: [  OK  ]"
+}
+
+restart()
+{
+       stop
+       start
+}
+
+
+case "$1" in
+       start)
+       start
+       ;;
+       stop)
+       stop
+       ;;
+       restart)
+       restart
+       ;;
+  *)
+       echo "Usage: service $EXEC {start|stop|restart}"
+       exit 1
+esac
+
+exit 0
