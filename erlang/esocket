@@ -7,8 +7,8 @@
 # Default-Stop: 0 1 6
 # Short-Description: OSSEC HIDS
 ### END INIT INFO
-EXEC_PATH=/home/ahwwl/erlang/esocket/rel
-EXEC=esocket.py
+EXEC_PATH=/home/ahwwl/erlang/esocket/install
+EXEC=esocket.pyo
 DAEMON=$EXEC_PATH/$EXEC
 NAME=esocket
 DESC=esocket

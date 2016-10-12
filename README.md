@@ -1,7 +1,8 @@
 # esocket
+$git clone https://github.com/ahwwl/esocket.git<br/>
+$cd esocket/erlang<br>
+$python install.py<br>
 
-$erl<br>
-$start:start().<br>
 
 set($key,"test");<br>
 get($key);<br>
